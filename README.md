@@ -81,20 +81,3 @@ Each clip in `site/audio/` is a plain `.mp3` file. To replace one, export
 your new audio as an `.mp3` with **the exact same filename** as the one
 you're replacing (e.g. `kidsMusicHome.mp3`), then upload it over the old one
 in `audio/` on the host. No other file needs to change.
-
-## What not to touch casually
-
-`app.js` controls the app's actual behaviour (which zone shows what, quiz
-logic, audio playback). It's plain, readable JavaScript, but a small typo in
-it can break the whole page (not just look wrong) — so treat changes there
-as developer work, or get someone comfortable with JavaScript to review
-before publishing.
-
-## For developers
-
-There is no build pipeline — `site/` is deployed as-is, which is why it's
-plain (readable, unminified) rather than compiled or bundled. That's a
-deliberate trade-off: the entire audio-heavy app is ~31MB, and minifying the
-~180KB of JS/CSS saves under 40KB (~0.1% of the total) — not worth requiring
-Node/npm for non-technical maintainers. If you ever want minification back,
-`git log` has the earlier commit that added an esbuild-based `dist/` build.
