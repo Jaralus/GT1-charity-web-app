@@ -1,6 +1,6 @@
 (function(){
 
-  /* ============ Bud SVG ============ */
+  /* ============ Character SVGs (Chloe, Sarah, Jon) ============ */
   function stickKidSVG(opts){
     opts = opts || {};
     var size = opts.size || 120;
@@ -103,7 +103,7 @@
     }
 
     var svg =
-    '<svg class="bud '+(animated?'bud-bounce':'')+'" viewBox="0 0 200 200" width="'+size+'" height="'+size+'" xmlns="http://www.w3.org/2000/svg">'+
+    '<svg class="character '+(animated?'character-bounce':'')+'" viewBox="0 0 200 200" width="'+size+'" height="'+size+'" xmlns="http://www.w3.org/2000/svg">'+
       limbsSvg+
       bottomSvg+
       /* shirt */
@@ -121,8 +121,8 @@
       /* eyebrows */
       '<path d="M85 47 Q91 43 97 46" stroke="#2A2A2A" stroke-width="2" fill="none" stroke-linecap="round"/>'+
       '<path d="M103 46 Q109 43 115 47" stroke="#2A2A2A" stroke-width="2" fill="none" stroke-linecap="round"/>'+
-      '<g class="'+(animated?'bud-eyes-wrap':'')+'">'+
-        '<g class="bud-blink">'+
+      '<g class="'+(animated?'character-eyes-wrap':'')+'">'+
+        '<g class="character-blink">'+
           '<circle cx="91" cy="58" r="3" fill="#2A2A2A"/>'+
           '<circle cx="109" cy="58" r="3" fill="#2A2A2A"/>'+
         '</g>'+
@@ -133,7 +133,7 @@
       /* smile */
       '<path d="M87 66 Q100 79 113 66" stroke="#2A2A2A" stroke-width="3" fill="none" stroke-linecap="round"/>'+
     '</svg>';
-    return animated ? '<div class="bud-jump-wrap">'+svg+'</div>' : svg;
+    return animated ? '<div class="character-jump-wrap">'+svg+'</div>' : svg;
   }
 
   function chloeSVG(opts){
@@ -229,48 +229,48 @@
   document.getElementById('meetTeamChloe').innerHTML = chloeSVG({size:70, animated:false});
   document.getElementById('meetTeamSarah').innerHTML = sarahSVG({size:70, animated:false});
   document.getElementById('meetTeamJon').innerHTML = jonSVG({size:70, animated:false});
-  document.getElementById('bud-zone-slot').innerHTML = chloeSVG({size:110});
+  document.getElementById('chloe-zone-slot').innerHTML = chloeSVG({size:110});
   var characterTriggers = {};
   function makeCharacterClickable(elId, greetings){
     var wrap = document.getElementById(elId);
     if(!wrap) return;
-    wrap.classList.add('bud-click-wrap');
+    wrap.classList.add('character-click-wrap');
     var greetingEl = document.createElement('div');
-    greetingEl.className = 'bud-greeting';
+    greetingEl.className = 'character-greeting';
     wrap.appendChild(greetingEl);
     function trigger(){
       sfxPeek();
       greetingEl.textContent = greetings[Math.floor(Math.random() * greetings.length)];
       greetingEl.classList.add('show');
-      wrap.classList.remove('bud-clicked');
+      wrap.classList.remove('character-clicked');
       void wrap.offsetWidth;
-      wrap.classList.add('bud-clicked');
+      wrap.classList.add('character-clicked');
       clearTimeout(wrap._greetTimeout);
       wrap._greetTimeout = setTimeout(function(){ greetingEl.classList.remove('show'); }, 2400);
     }
     wrap.addEventListener('click', trigger);
     characterTriggers[elId] = trigger;
   }
-  makeCharacterClickable('bud-zone-slot', [
+  makeCharacterClickable('chloe-zone-slot', [
     "Hi there! 👋", "Hello, friend!", "Hiya!", "Great to see you!",
     "How are you today?", "You've got this!", "Ready for an adventure?", "Yay, you're here!"
   ]);
-  document.getElementById('bud-zone-slot-adult').innerHTML = sarahSVG({size:150});
-  makeCharacterClickable('bud-zone-slot-adult', [
+  document.getElementById('sarah-zone-slot').innerHTML = sarahSVG({size:150});
+  makeCharacterClickable('sarah-zone-slot', [
     "Hello there! 👋", "How are things today?", "Great to see you!",
     "You're doing brilliantly.", "Here if you need anything.", "Hiya!"
   ]);
-  document.getElementById('bud-story-slot').innerHTML = chloeSVG({size:80, animated:false});
+  document.getElementById('chloe-story-slot').innerHTML = chloeSVG({size:80, animated:false});
   document.getElementById('sarah-story-slot').innerHTML = sarahSVG({size:80, animated:false});
   document.getElementById('jon-story-slot').innerHTML = jonSVG({size:80, animated:false});
-  document.getElementById('bud-day-slot').innerHTML = chloeSVG({size:60, animated:false});
+  document.getElementById('chloe-day-slot').innerHTML = chloeSVG({size:60, animated:false});
 
-  document.getElementById('ziggy-zone-slot').innerHTML = jonSVG({size:110});
-  makeCharacterClickable('ziggy-zone-slot', [
+  document.getElementById('jon-zone-slot').innerHTML = jonSVG({size:110});
+  makeCharacterClickable('jon-zone-slot', [
     "Hi, I'm Jon! 👋", "Hey there!", "Hiya, friend!", "So great you're here!",
     "How's it going today?", "You're a great friend!", "Nice to see you!"
   ]);
-  document.getElementById('ziggy-story-slot').innerHTML = jonSVG({size:60, animated:false});
+  document.getElementById('jon-understand-slot').innerHTML = jonSVG({size:60, animated:false});
 
   document.getElementById('gt1-slot-brand').innerHTML = gt1LogoSVG(34);
   document.getElementById('gt1-slot-panel').innerHTML = gt1LogoSVG(52);
@@ -573,7 +573,7 @@
       }
     });
 
-    var zoneHomeCharacter = { 'view-kids-home':'bud-zone-slot', 'view-adult-home':'bud-zone-slot-adult', 'view-friends-home':'ziggy-zone-slot' };
+    var zoneHomeCharacter = { 'view-kids-home':'chloe-zone-slot', 'view-adult-home':'sarah-zone-slot', 'view-friends-home':'jon-zone-slot' };
     if(zoneHomeCharacter[id] && !autoGreetedZones[id]){
       autoGreetedZones[id] = true;
       (function(elId){
@@ -2231,12 +2231,12 @@
     setTimeout(function(){ wrap.remove(); }, 1300);
   }
 
-  /* ============ Bud: random side-peek-and-wave (Kids Zone only) ============ */
-  document.getElementById('bud-peek-inner').innerHTML = chloeSVG({size:90, animated:false});
+  /* ============ Chloe: random side-peek-and-wave (Kids Zone only) ============ */
+  document.getElementById('chloe-peek-inner').innerHTML = chloeSVG({size:90, animated:false});
 
-  function showBudPeek(){
+  function showChloePeek(){
     if(currentViewId.indexOf('view-kids') !== 0){ return; }
-    var wrap = document.getElementById('bud-peek');
+    var wrap = document.getElementById('chloe-peek');
     var fromLeft = Math.random() < 0.5;
     var topPct = 15 + Math.random()*55;
     wrap.style.top = topPct + '%';
@@ -2252,14 +2252,14 @@
     }, 2600);
   }
 
-  function scheduleBudPeek(){
+  function scheduleChloePeek(){
     var delay = 18000 + Math.random()*22000; // every 18-40 seconds
     setTimeout(function(){
-      if(currentViewId.indexOf('view-kids') === 0){ showBudPeek(); }
-      scheduleBudPeek();
+      if(currentViewId.indexOf('view-kids') === 0){ showChloePeek(); }
+      scheduleChloePeek();
     }, delay);
   }
-  scheduleBudPeek();
+  scheduleChloePeek();
 
   /* ============ Siblings & Friends Zone ============ */
   var friendsBadges = { understand:false, questions:false, feelings:false, tips:false, scenario:false, knowledge:false };
