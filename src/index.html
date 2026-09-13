@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GT1's Toolkit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:wght@400;600;700;800&family=Archivo:wght@500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="app">
+  <div class="bud-peek-wrap" id="bud-peek"><div class="bud-peek-inner" id="bud-peek-inner"></div></div>
+
+  <header class="topbar hidden" id="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <a href="https://gotype1.com" target="_blank" rel="noopener" class="gt1-badge" id="gt1-slot-brand" style="width:34px; height:35px;" aria-label="Go Type 1! – in partnership" title="In partnership with Go Type 1!"></a>
+        <span class="brand-name" id="brand-label">Kids Zone</span>
+      </div>
+      <div class="topbar-actions">
+        <button class="pill-btn" id="switchZoneBtn">Switch zone</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ============ LANDING ============ -->
+    <section id="view-landing" class="landing">
+      <div id="gt1-slot-hero" style="display:flex; justify-content:center;"></div>
+      <h1 class="landing-title">GT1's Toolkit</h1>
+      <p class="landing-sub">A friendly guide for children living with Type 1 Diabetes, their siblings and friends, and the grown-ups who look after them.</p>
+
+      <button class="meet-team-teaser" id="meetTeamTeaser">
+        <div class="meet-team-avatars" id="meetTeamTeaserAvatars"></div>
+        <div class="meet-team-teaser-text">
+          <strong>Meet the team</strong>
+          <span>Say hello to Chloe, Sarah and Jon →</span>
+        </div>
+      </button>
+
+      <div class="doors">
+        <button class="door door-kids" data-zone="kids">
+          <div class="door-avatar" id="door-avatar-kids"></div>
+          <div class="door-eyebrow">For Children</div>
+          <div class="door-title">Kids Zone</div>
+          <p class="door-desc">Games, stories and badges to help you understand your body and feel confident about living with T1D.</p>
+          <span class="door-cta">Let's go →</span>
+        </button>
+        <button class="door door-friends" data-zone="friends">
+          <div class="door-avatar" id="door-avatar-friends"></div>
+          <div class="door-eyebrow">For Siblings &amp; Friends</div>
+          <div class="door-title">Siblings &amp; Friends Zone</div>
+          <p class="door-desc">For anyone who knows someone with T1D. Your questions, your feelings, and how to be a great friend.</p>
+          <span class="door-cta">Come in →</span>
+        </button>
+        <button class="door door-adult" data-zone="adult">
+          <div class="door-avatar" id="door-avatar-adult"></div>
+          <div class="door-eyebrow">For Parents, Carers &amp; Teachers</div>
+          <div class="door-title">Grown-Ups Zone</div>
+          <p class="door-desc">Helpful tips for understanding T1D and supporting a child living with T1D.</p>
+          <span class="door-cta">Enter →</span>
+        </button>
+      </div>
+
+      <p class="gt1-credit">In partnership with <a href="https://gotype1.com" target="_blank" rel="noopener" style="color:inherit; text-decoration:underline;">Go Type&nbsp;1!</a></p>
+    </section>
+
+    <!-- ============ MEET THE TEAM ============ -->
+    <section id="view-meet-team" class="hidden">
+      <div class="section-header">
+        <button class="back-btn" data-goto="view-landing">←</button>
+        <h2>Meet the Team</h2>
+      </div>
+
+      <div class="panel" style="margin-bottom:22px;">
+        <p style="line-height:1.6; font-size:1.025rem;">Three friendly faces guide you through GT1's Toolkit, one for each zone. Say hello!</p>
+      </div>
+
+      <div class="meet-team-card">
+        <div class="avatar-slot" id="meetTeamChloe"></div>
+        <div>
+          <h3>Chloe</h3>
+          <span class="role-tag" style="background:#FFE3C2; color:#B2542E;">Kids Zone</span>
+          <p>Chloe is your guide in the Kids Zone. She's here to help you understand Type 1 Diabetes, answer your questions, and cheer you on every step of the way.</p>
+        </div>
+      </div>
+
+      <div class="meet-team-card">
+        <div class="avatar-slot" id="meetTeamSarah"></div>
+        <div>
+          <h3>Sarah</h3>
+          <span class="role-tag" style="background:#E1E7F5; color:var(--adult-slate);">Grown-Ups Zone</span>
+          <p>Sarah is your guide in the Grown-Ups Zone. She's here to support parents, carers and teachers with practical, everyday advice for looking after a child with T1D.</p>
+        </div>
+      </div>
+
+      <div class="meet-team-card">
+        <div class="avatar-slot" id="meetTeamJon"></div>
+        <div>
+          <h3>Jon</h3>
+          <span class="role-tag" style="background:#D6F0FF; color:#1B4F8A;">Siblings &amp; Friends Zone</span>
+          <p>Jon is your guide in the Siblings &amp; Friends Zone. He's here for anyone who knows someone with T1D, answering questions and helping you be a great friend.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ KIDS HOME ============ -->
+    <section id="view-kids-home" class="hidden">
+      <div class="zone-header">
+        <div id="bud-zone-slot"></div>
+        <div>
+          <h1>Hiya, I'm Chloe!</h1>
+          <p class="zone-tagline">I'm here to help you learn about life with T1D! Welcome to the gang, we're all T1D superheroes around here!</p>
+          <p class="zone-tagline" style="margin-top:8px;">Pick something to explore. Every one you finish earns a badge.</p>
+        </div>
+      </div>
+
+      <div class="progress-strip">
+        <span class="count" id="kidsBadgeCount">0 / 9 badges</span>
+        <div class="track"><div class="fill" id="kidsProgressFill" style="width:0%"></div></div>
+        <button class="count" id="kidsSoundToggle" style="background:var(--kids-purple); color:#fff; cursor:pointer;" aria-label="Toggle sound">🔊</button>
+      </div>
+
+      <div class="panel" style="margin-bottom:18px;">
+        <p style="font-weight:800; margin-bottom:10px;">How are you feeling today?</p>
+        <div class="checkin-row" id="checkinRow">
+          <button class="checkin-emoji" data-mood="great">😄</button>
+          <button class="checkin-emoji" data-mood="okay">🙂</button>
+          <button class="checkin-emoji" data-mood="meh">😐</button>
+          <button class="checkin-emoji" data-mood="tough">😕</button>
+        </div>
+        <p id="checkinResponse" class="hidden" style="margin-top:10px; font-size:.9rem; color:rgba(28,43,74,0.65);"></p>
+      </div>
+
+      <div class="card-grid">
+        <button class="tile" data-goto="view-kids-guardian">
+          <div class="tile-icon" style="background:var(--kids-yellow)">📖</div>
+          <div class="tile-title">Meet T1D</div>
+          <p class="tile-desc">A quick story explaining what Type 1 Diabetes actually is.</p>
+        </button>
+        <button class="tile" data-goto="view-kids-symptom">
+          <div class="tile-icon" style="background:var(--kids-mint)">🎯</div>
+          <div class="tile-title">Symptom Spotter</div>
+          <p class="tile-desc">Match how you feel to what's happening in your body.</p>
+        </button>
+        <button class="tile" data-goto="view-kids-myths">
+          <div class="tile-icon" style="background:var(--kids-coral)">🔍</div>
+          <div class="tile-title">Myth Busters</div>
+          <p class="tile-desc">Truth or myth? Test what you know.</p>
+        </button>
+        <button class="tile" data-goto="view-kids-day">
+          <div class="tile-icon" style="background:var(--kids-purple)">🎒</div>
+          <div class="tile-title">A Day in My Life</div>
+          <p class="tile-desc">Follow a character through a school day.</p>
+        </button>
+        <button class="tile" data-goto="view-kids-feelings">
+          <div class="tile-icon" style="background:#FFD9E8">💛</div>
+          <div class="tile-title">Your Feelings</div>
+          <p class="tile-desc">Worries lots of kids have, and a calming break.</p>
+        </button>
+        <button class="tile" data-goto="view-kids-explain">
+          <div class="tile-icon" style="background:var(--kids-mint)">💭</div>
+          <div class="tile-title">Explain It</div>
+          <p class="tile-desc">Practise answering friends' questions.</p>
+        </button>
+        <button class="tile" data-goto="view-kids-equipment">
+          <div class="tile-icon" style="background:var(--kids-coral)">🔧</div>
+          <div class="tile-title">My Kit</div>
+          <p class="tile-desc">Meet the cool gadgets that help you out.</p>
+        </button>
+        <button class="tile" data-goto="view-kids-littlewins">
+          <div class="tile-icon" style="background:var(--kids-yellow)">🌟</div>
+          <div class="tile-title">Little Wins</div>
+          <p class="tile-desc">All the brilliant things about being you.</p>
+        </button>
+        <button class="tile" data-goto="view-kids-badges">
+          <div class="tile-icon" style="background:var(--blue-bright)">🏅</div>
+          <div class="tile-title">Badge Wall</div>
+          <p class="tile-desc">See everything you've earned so far.</p>
+        </button>
+      </div>
+    </section>
+
+    <!-- ---- Kids: Meet Your Guardian ---- -->
+    <section id="view-kids-guardian" class="hidden">
+      <div class="section-header">
+        <button class="back-btn" data-goto="view-kids-home">←</button>
+        <h2>Meet T1D</h2>
+      </div>
+      <div class="panel">
+        <div class="speech-row">
+          <div style="display:flex; flex-direction:column; align-items:flex-start; gap:6px; flex-shrink:0;">
+            <div id="bud-story-slot"></div>
+            <div id="crew-team-avatars" class="hidden" style="display:flex; flex-direction:column; align-items:flex-start; gap:6px;">
+              <div id="sarah-story-slot"></div>
+              <div id="jon-story-slot"></div>
+            </div>
+          </div>
+          <div class="speech-bubble" id="storyText">Loading...</div>
+        </div>
+        <div class="slide-dots" id="storyDots"></div>
+        <div class="btn-row">
+          <button class="btn secondary" id="storyBack">Back</button>
+          <button class="btn" id="storyNext">Next</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ---- Kids: Symptom Spotter ---- -->
+    <section id="view-kids-symptom" class="hidden">
+      <div class="section-header">
+        <button class="back-btn" data-goto="view-kids-home">←</button>
+        <h2>Symptom Spotter</h2>
+      </div>
+      <div class="panel">
+        <div style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:18px;">
+          <span style="background:var(--kids-yellow); font-weight:800; font-size:0.945rem; padding:8px 14px; border-radius:999px;">🥤 Thirsty</span>
+          <span style="background:var(--kids-mint); color:#fff; font-weight:800; font-size:0.945rem; padding:8px 14px; border-radius:999px;">🚻 Toilet</span>
+          <span style="background:var(--kids-coral); color:#fff; font-weight:800; font-size:0.945rem; padding:8px 14px; border-radius:999px;">🥱 Tired</span>
+          <span style="background:var(--kids-purple); color:#fff; font-weight:800; font-size:0.945rem; padding:8px 14px; border-radius:999px;">👕 Thinner</span>
+        </div>
+        <p style="margin-bottom:14px; font-size:0.975rem; font-weight:700; color:rgba(28,43,74,0.85);">Those are the 4Ts, the main signs to watch for. Tap two cards to match each word with its picture. Find all 4 pairs!</p>
+        <div class="match-grid" id="matchGrid"></div>
+        <p id="matchComplete" class="hidden" style="margin-top:16px; font-weight:800; color:#2FB894;">🎉 Nice work, you matched them all! Badge earned.</p>
+      </div>
+    </section>
+
+    <!-- ---- Kids: Myth Busters ---- -->
+    <section id="view-kids-myths" class="hidden">
+      <div class="section-header">
+        <button class="back-btn" data-goto="view-kids-home">←</button>
+        <h2>Myth Busters</h2>
+      </div>
+      <div class="panel myth-card">
+        <div class="myth-progress" id="mythProgress"></div>
+        <div class="myth-statement" id="mythStatement">Loading...</div>
+        <div class="myth-choices">
+          <button class="myth-choice truth" data-answer="truth">✅ Truth</button>
+          <button class="myth-choice myth" data-answer="myth">❌ False</button>
+        </div>
+        <div class="myth-feedback hidden" id="mythFeedback"></div>
+        <div class="btn-row" style="justify-content:center;">
+          <button class="btn secondary hidden" id="mythBack">Back</button>
+          <button class="btn hidden" id="mythNext">Next question</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ---- Kids: Day in My Life ---- -->
+    <section id="view-kids-day" class="hidden">
+      <div class="section-header">
+        <button class="back-btn" id="dayMainBack">←</button>
+        <h2>A Day in My Life</h2>
+      </div>
+
+      <div id="dayListWrap">
+        <p style="margin-bottom:14px; font-size:1.025rem; color:rgba(28,43,74,0.65);">Pick a day to follow. See how it goes!</p>
+        <div class="card-grid" id="dayList"></div>
+      </div>
+
+      <div id="dayPlayWrap" class="hidden">
+        <div class="panel">
+          <div id="dayStoryUi">
+            <div class="speech-row">
+              <div id="bud-day-slot"></div>
+              <div class="speech-bubble" id="dayText">Loading...</div>
+            </div>
+            <div class="btn-row" id="dayChoices" style="flex-direction:column; align-items:stretch;"></div>
+          </div>
+          <div id="dayPackingUi" class="hidden">
+            <h3 id="dayPackingTitle" style="font-family:'Baloo 2',sans-serif; color:var(--blue-deep); margin-bottom:6px;">Pack your bag</h3>
+            <p id="dayPackingIntro" style="margin-bottom:14px; font-size:0.975rem; color:rgba(28,43,74,0.65);"></p>
+            <div class="match-grid" id="dayPackingGrid"></div>
+            <div class="btn-row" style="justify-content:center;">
+              <button class="btn" id="dayPackingCheckBtn" style="margin-top:16px;">Check my bag</button>
+            </div>
+            <p id="dayPackingFeedback" class="hidden" style="margin-top:16px; font-weight:700;"></p>
+            <div class="btn-row" style="justify-content:center;">
+              <button class="btn hidden" id="dayPackingContinueBtn" style="margin-top:8px;">Continue</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ---- Kids: Your Feelings ---- -->
+    <section id="view-kids-feelings" class="hidden">
+      <div class="section-header">
+        <button class="back-btn" data-goto="view-kids-home">←</button>
+        <h2>Your Feelings</h2>
+      </div>
+
+      <div class="panel" style="margin-bottom:18px;">
+        <p style="line-height:1.6;">Having T1D can bring up all sorts of feelings, and pretty much all of them are completely normal. It's okay to feel annoyed or fed up with it sometimes, even on days when nothing's actually gone wrong. And if you ever worry that you're a burden to the people looking after you, you're not. Looking after you is something they want to do.</p>
+      </div>
+
+      <h3 style="font-family:'Baloo 2',sans-serif; color:var(--blue-deep); margin:20px 0 10px;">Worries other kids have had too</h3>
+      <p style="margin-bottom:14px; font-size:.92rem; color:rgba(28,43,74,0.6);">Tap a worry to see what might help.</p>
+      <div class="card-grid" id="worryGrid"></div>
+
+      <div class="panel" style="margin-top:20px; text-align:center;">
+        <h3 style="font-family:'Baloo 2',sans-serif; color:var(--blue-deep); margin-bottom:8px;">Chloe's Breathing Break</h3>
+        <p style="font-size:.9rem; color:rgba(28,43,74,0.65); max-width:380px; margin:0 auto 14px; line-height:1.5;">When you're worried, cross, or your tummy feels fizzy, slow breathing helps your body calm down. Follow the circle: breathe in as it grows, breathe out as it shrinks.</p>
+        <div class="breathing-circle kids-breathing" id="kidsBreathingCircle"></div>
+        <p class="breathing-label" id="kidsBreathingLabel" style="color:var(--blue-deep);">Tap start when you're ready</p>
+        <button class="btn" id="kidsBreathingToggle" style="margin-top:16px;">Start</button>
+      </div>
+
+      <h3 style="font-family:'Baloo 2',sans-serif; color:var(--blue-deep); margin:20px 0 10px;">Telling a friend</h3>
+      <p style="margin-bottom:14px; font-size:.92rem; color:rgba(28,43,74,0.6);">You don't have to explain everything. Here are a few simple ways other kids have done it.</p>
+      <div id="tellFriendGrid" class="card-grid"></div>
+
+      <div class="btn-row" style="justify-content:center; margin-top:20px;">
+        <button class="btn" id="feelingsDoneBtn">I've got this</button>
+      </div>
+    </section>
+
+    <!-- ---- Kids: Explain It ---- -->
+    <section id="view-kids-explain" class="hidden">
+      <div class="section-header">
+        <button class="back-btn" data-goto="view-kids-home">←</button>
+        <h2>Explain It</h2>
+      </div>
+      <div class="panel myth-card">
+        <div class="myth-progress" id="explainProgress"></div>
+        <div class="myth-statement" id="explainQuestion">Loading...</div>
+        <div class="btn-row" id="explainChoices" style="flex-direction:column; align-items:stretch;"></div>
+        <div class="myth-feedback hidden" id="explainFeedback"></div>
+        <div class="btn-row" style="justify-content:center;">
+          <button class="btn hidden" id="explainNext">Next question</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ---- Kids: My Kit ---- -->
+    <section id="view-kids-equipment" class="hidden">
+      <div class="section-header">
+        <button class="back-btn" data-goto="view-kids-home">←</button>
+        <h2>My Kit</h2>
+      </div>
+
+      <div class="panel" style="margin-bottom:18px;">
+        <p style="line-height:1.6; font-size:1.05rem;">You've got some pretty cool gadgets on your side! They're there to help you, not to hold you back. Let's meet them.</p>
+      </div>
+
+      <p style="margin-bottom:14px; font-size:0.92rem; color:rgba(28,43,74,0.6);">Tap a gadget to find out more.</p>
+      <div class="card-grid" id="equipmentKidsGrid"></div>
+
+      <div class="panel" style="margin-top:20px; background:#FFF0DC;">
+        <h3 style="font-family:'Baloo 2',sans-serif; color:var(--blue-deep); margin-bottom:8px;">What's that beep? 🔔</h3>
+        <p style="line-height:1.6; font-size:0.98rem;">Sometimes your kit might beep or buzz, that's totally normal! It's just your gadget saying "Hey, just checking in!" It's not broken, and you haven't done anything wrong. It happens to loads of kids every single day.</p>
+        <p style="line-height:1.6; font-size:0.98rem; margin-top:12px;">If someone asks me, I might say:</p>
+        <p style="line-height:1.6; font-size:0.98rem; margin-top:6px; font-style:italic; background:#fff; border-radius:10px; padding:10px 14px;">"Oh, that beep? It's just my gadget talking. It does that sometimes to check everything's okay."</p>
+      </div>
+
+      <div class="btn-row" style="justify-content:center; margin-top:20px;">
+        <button class="btn" id="equipmentDoneBtn">Got it!</button>
+      </div>
+    </section>
+
+    <!-- ---- Kids: Little Wins ---- -->
+    <section id="view-kids-littlewins" class="hidden">
+      <div class="section-header">
+        <button class="back-btn" data-goto="view-kids-home">←</button>
+        <h2>Little Wins</h2>
+      </div>
+
+      <div class="panel" style="margin-bottom:18px;">
+        <p style="line-height:1.6; font-size:1.05rem;">T1D comes with a lot of talking about changes and tricky bits and it can be hard to see the positives, but there are some genuinely brilliant things about it too. Here are some little wins to focus on!</p>
+      </div>
+
+      <p style="margin-bottom:14px; font-size:0.92rem; color:rgba(28,43,74,0.6);">Tap a card to see your wins.</p>
+      <div class="card-grid" id="littleWinsGrid"></div>
+
+      <div class="btn-row" style="justify-content:center; margin-top:20px;">
+        <button class="btn" id="littleWinsDoneBtn">I'm a Little Winner!</button>
+      </div>
+    </section>
+
+    <section id="view-kids-badges" class="hidden">
+      <div class="section-header">
+        <button class="back-btn" data-goto="view-kids-home">←</button>
+        <h2>Badge Wall</h2>
+      </div>
+      <div class="panel certificate hidden" id="badgeCertificate">
+        <div style="font-size:2.4rem;">🎓</div>
+        <h3 style="font-family:'Baloo 2',sans-serif; color:var(--blue-deep); margin:8px 0 6px;">You did it all!</h3>
+        <p style="font-size:.95rem; color:rgba(28,43,74,0.7);">You've completed every part of the Crew program. You really know your stuff, well done!</p>
+      </div>
+      <div class="badge-wall" id="badgeWall"></div>
+    </section>
+
+    <!-- ============ ADULT HOME ============ -->
+    <section id="view-adult-home" class="hidden">
+      <div class="zone-header">
+        <div id="bud-zone-slot-adult"></div>
+        <div>
+          <h1>Hi, I'm Sarah</h1>
+          <p class="zone-tagline">Your guide to practical support for parents, carers and teachers.</p>
+        </div>
+        <button class="count" id="adultSoundToggle" style="background:var(--adult-slate); color:#fff; cursor:pointer; margin-left:auto;" aria-label="Toggle sound">🔊</button>
+      </div>
+
+      <div class="card-grid">
+        <button class="tile" data-goto="view-adult-justdiagnosed">
+          <div class="tile-icon" style="background:#FDE6E0">🌱</div>
+          <div class="tile-title">Just Diagnosed</div>
+          <p class="tile-desc">Support for the early days, and questions worth asking.</p>
+        </button>
+        <button class="tile" data-goto="view-adult-basics">
+          <div class="tile-icon" style="background:#DCEBF5">📘</div>
+          <div class="tile-title">The Basics</div>
+          <p class="tile-desc">A short, clear primer on Type 1 Diabetes.</p>
+        </button>
+        <button class="tile" data-goto="view-adult-equipment">
+          <div class="tile-icon" style="background:#E3E9F5">🩹</div>
+          <div class="tile-title">Understanding the Equipment</div>
+          <p class="tile-desc">What the devices are, and what to expect from each.</p>
+        </button>
+        <button class="tile" data-goto="view-adult-scenario">
+          <div class="tile-icon" style="background:#DCE9E6">🎬</div>
+          <div class="tile-title">Scenario Trainer</div>
+          <p class="tile-desc">Walk through a real classroom situation.</p>
+        </button>
+        <button class="tile" data-goto="view-adult-selfcare">
+          <div class="tile-icon" style="background:#DCEEE4">🌿</div>
+          <div class="tile-title">Looking After You</div>
+          <p class="tile-desc">Self-care tools and support for carers themselves.</p>
+        </button>
+        <button class="tile" data-goto="view-adult-school">
+          <div class="tile-icon" style="background:#FFF3D6">🏫</div>
+          <div class="tile-title">Working with School</div>
+          <p class="tile-desc">Care plans, exams, trips, and starting somewhere new.</p>
+        </button>
+      </div>
+
+      <div class="panel" style="margin-top:24px; font-size:1.025rem; line-height:1.6; display:flex; gap:16px; align-items:center;">
+        <a href="https://gotype1.com" target="_blank" rel="noopener" class="gt1-badge" id="gt1-slot-panel" style="width:52px; height:54px;" aria-label="Go Type 1! website"></a>
+        <div>
+          <strong>Beyond this app:</strong> in-person peer support groups exist for families too, for example <a href="https://gotype1.com" target="_blank" rel="noopener" style="color:var(--adult-slate);">Go Type&nbsp;1!</a>, a West Sussex charity running regular meet-ups where children with T1D and their families connect with others who understand it. Worth checking whether something similar exists locally.
+        </div>
+      </div>
+      </section>
+
+    <!-- ---- Adult: Working with School ---- -->
+    <section id="view-adult-school" class="hidden">
+      <div class="section-header">
+        <button class="back-btn" data-goto="view-adult-home">←</button>
+        <h2>Working with School</h2>
+      </div>
+
+      <div class="panel" style="margin-bottom:20px;">
+        <p style="line-height:1.6; font-size:1.025rem;">School is where a lot of the day happens without you there. Getting the basics set up early, and revisited at the right moments, makes a real difference to how smoothly things run.</p>
+      </div>
+
+      <p style="margin-bottom:14px; font-size:0.9rem; color:rgba(38,52,74,0.65);">Tap a topic to find out more.</p>
+      <div class="decoder-grid" id="schoolGrid"></div>
+
+      <div class="panel" style="margin-top:22px;">
+        <h3 style="font-family:'Archivo',sans-serif; color:var(--adult-slate); margin-bottom:10px;">Worth sharing with school</h3>
+        <ul style="margin:0; padding-left:20px; font-size:0.95rem; line-height:1.8;">
+          <li>A written care plan, agreed with the diabetes team, covering day-to-day management and emergency steps</li>
+          <li>Who to contact, and in what order, if something needs a decision quickly</li>
+          <li>What a low or high might look like for this child specifically, since it doesn't always match the textbook</li>
+          <li>Any equipment kept on site, and who knows how to help if it's needed</li>
+          <li>A plan for PE, trips, and exams, agreed ahead of time rather than worked out on the day</li>
+        </ul>
+      </div>
+
+      <div class="panel" style="margin-top:20px; background:#F3EFE7;">
+        <p style="font-size:0.95rem; line-height:1.6;">Starting a new school year, a new teacher, or a new school entirely means going through the basics again, even if it feels repetitive. A quick refresh conversation each time is worth the effort.</p>
+      </div>
+    </section>
+
+    <!-- ---- Adult: Just Diagnosed ---- -->
+    <section id="view-adult-justdiagnosed" class="hidden">
+      <div class="section-header">
+        <button class="back-btn" data-goto="view-adult-home">←</button>
+        <h2>Just Diagnosed</h2>
+      </div>
+
+      <div class="panel" style="margin-bottom:20px;">
+        <p style="line-height:1.6; font-size:1.075rem;">If your child has just been diagnosed with T1D, you're probably still taking it in. Whatever you're feeling right now, and however much you're feeling it, that's a normal response to a lot of new information landing at once. You don't need to have it figured out today.</p>
+      </div>
+
+      <div class="panel" style="margin-bottom:20px; background:#F3EFE7;">
+        <p style="line-height:1.6; font-size:0.975rem;">A new normal will gradually settle in, it rarely feels this overwhelming for long. And when you're talking to your diabetes team, no question is a silly one, if it's on your mind, it's worth asking.</p>
+      </div>
+
+      <h3 style="font-family:'Archivo',sans-serif; color:var(--adult-slate); margin:24px 0 10px;">Questions worth asking your diabetes team</h3>
+      <p style="margin-bottom:14px; font-size:0.9rem; color:rgba(38,52,74,0.65);">You won't need all the answers at once, this is just a starting list to bring to appointments.</p>
+      <div id="justDiagnosedQuestions"></div>
+
+      <div class="panel" style="margin-top:22px; background:#F3EFE7;">
+        <h3 style="font-family:'Archivo',sans-serif; color:var(--adult-slate); margin-bottom:10px;">It gets easier</h3>
+        <p style="font-size:0.975rem; line-height:1.6;">Nearly everything about this feels unfamiliar right now, the terminology, the routine, the equipment. Almost all of it becomes second nature faster than it seems possible today. You're not expected to become an expert overnight, your diabetes team is there for exactly that reason, and you can lean on them as much as you need to.</p>
+      </div>
+
+      <div class="panel" style="margin-top:20px; display:flex; gap:16px; align-items:center;">
+        <a href="https://gotype1.com" target="_blank" rel="noopener" class="gt1-badge" style="width:44px; height:46px; flex-shrink:0;" aria-label="Go Type 1! website" id="gt1-slot-justdiagnosed"></a>
+        <p style="font-size:0.95rem; line-height:1.5;">You don't have to navigate this alone. Peer support groups, like <a href="https://gotype1.com" target="_blank" rel="noopener" style="color:var(--adult-slate);">Go Type&nbsp;1!</a>, connect families going through the same thing, often the most reassuring conversations happen with someone else who's already been where you are now.</p>
+      </div>
+    </section>
+
+    <!-- ---- Adult: The Basics ---- -->
+    <section id="view-adult-basics" class="hidden">
+      <div class="section-header">
+        <button class="back-btn" data-goto="view-adult-home">←</button>
+        <h2>The Basics</h2>
+      </div>
+      <div class="panel" style="line-height:1.7; font-size:1.075rem;">
+        <p><strong>Type 1 Diabetes (T1D)</strong> is an autoimmune condition where the body's immune system stops the pancreas from making insulin. It is not caused by diet or lifestyle, and it cannot be prevented or cured, yet. A huge amount of advances are being made all the time.</p>
+        <p style="margin-top:12px;"><strong>Insulin</strong> is the hormone that lets sugar (glucose) move from the blood into cells for energy. Without it, blood glucose rises. People with T1D manage this with insulin delivered by injection or pump, guided by their diabetes care team.</p>
+        <p style="margin-top:12px;"><strong>Blood glucose</strong> can run high (hyperglycaemia) or low (hypoglycaemia), and both can affect mood, concentration and behaviour.</p>
+        <p style="margin-top:12px; color:rgba(38,52,74,0.6); font-size:0.975rem;">This section will expand with a fuller primer, illustrations and a short knowledge check.</p>
+      </div>
+    </section>
+
+    <!-- ---- Adult: Understanding the Equipment ---- -->
+    <section id="view-adult-equipment" class="hidden">
+      <div class="section-header">
+        <button class="back-btn" data-goto="view-adult-home">←</button>
+        <h2>Understanding the Equipment</h2>
+      </div>
+
+      <div class="panel" style="margin-bottom:20px;">
+        <p style="line-height:1.6; font-size:1.025rem;">There's usually a fair bit of new kit to get your head around early on. This is a plain-language overview of what each device is and roughly what to expect day to day, not a recommendation of any particular option. Which equipment is used, and when, is a decision for the child's diabetes team based on what suits them. Your diabetes team will always help explain everything properly, hands-on, so you never have to figure it out alone.</p>
+      </div>
+
+      <p style="margin-bottom:14px; font-size:0.9rem; color:rgba(38,52,74,0.65);">Tap a device to see what to expect.</p>
+      <div class="decoder-grid" id="equipmentGrid"></div>
+
+      <div class="panel" style="margin-top:22px;">
+        <h3 style="font-family:'Archivo',sans-serif; color:var(--adult-slate); margin-bottom:10px;">A few practical things worth knowing</h3>
+        <ul style="margin:0; padding-left:20px; font-size:0.95rem; line-height:1.8;">
+          <li>Sharps (needles, lancets) need a proper sharps bin, your pharmacy or diabetes team can tell you how to get one and how to arrange collection or disposal</li>
+          <li>It's worth keeping a small backup kit (spare pen, strips, batteries) somewhere reliable, like a school bag or car, in case the primary device fails</li>
+          <li>Travelling, especially by air, usually needs a letter from the diabetes team confirming the equipment and supplies are medically necessary</li>
+          <li>Devices occasionally fail, come loose, or give an unexpected reading, this is common and usually has a straightforward fix, your diabetes team's advice line is there for exactly this</li>
+        </ul>
+      </div>
+
+      <div class="panel" style="margin-top:20px; background:#F3EFE7;">
+        <p style="font-size:0.95rem; line-height:1.6;">If anything about the equipment feels confusing or overwhelming, that's completely normal, it's a lot to take in. Their Team can talk you through the specifics, show you how everything works hands-on, and help you find what suits your family best.</p>
+      </div>
+    </section>
+
+    <!-- ---- Adult: Scenario Trainer ---- -->
+    <section id="view-adult-scenario" class="hidden">
+      <div class="section-header">
+        <button class="back-btn" id="scenarioMainBack">←</button>
+        <h2>Scenario Trainer</h2>
+      </div>
+
+      <div id="scenarioListWrap">
+        <p style="margin-bottom:16px; font-size:1.025rem; color:rgba(38,52,74,0.65);">Pick a situation to walk through. Each one plays out based on the choices you make.</p>
+        <div class="card-grid" id="scenarioList"></div>
+      </div>
+
+      <div id="scenarioPlayWrap" class="hidden">
+        <div class="panel" id="scenarioPanel"></div>
+      </div>
+    </section>
+
+    <!-- ---- Adult: Looking After You ---- -->
+    <section id="view-adult-selfcare" class="hidden">
+      <div class="section-header">
+        <button class="back-btn" data-goto="view-adult-home">←</button>
+        <h2>Looking After You</h2>
+      </div>
+      <p style="margin-bottom:20px; font-size:1.025rem; line-height:1.6; color:rgba(38,52,74,0.7);">Supporting a child with T1D is a marathon, not a sprint. How you're doing affects how well you can show up for them, so this isn't indulgent, it's part of the job.</p>
+
+      <!-- Breathing exercise -->
+      <div class="panel" style="text-align:center; margin-bottom:20px;">
+        <h3 style="font-family:'Archivo',sans-serif; color:var(--adult-slate); margin-bottom:14px;">A minute to reset</h3>
+        <div class="breathing-circle" id="breathingCircle"></div>
+        <p class="breathing-label" id="breathingLabel">Tap start when you're ready</p>
+        <button class="btn" id="breathingToggle" style="margin-top:16px;">Start</button>
+        <p style="margin-top:14px; font-size:.9rem; color:rgba(38,52,74,0.55);">A simple box-breathing pattern: in for 4, hold for 4, out for 4, hold for 4.</p>
+      </div>
+
+      <!-- Small things that may genuinely help -->
+      <h3 style="font-family:'Archivo',sans-serif; color:var(--adult-slate); margin:24px 0 10px;">Small things that may genuinely help</h3>
+      <div class="panel">
+        <ol style="margin:0; padding-left:20px; font-size:.95rem; line-height:1.9;">
+          <li><strong>Make tiny pockets of calm.</strong> Take a minute to breathe while the kettle boils or sit quietly after a sensor change. Small pauses help your mind reset.</li>
+          <li><strong>Keep one simple routine for yourself.</strong> A morning drink, a good book, gentle swim. Something that stays the same even when diabetes feels unpredictable.</li>
+          <li><strong>Share tasks when you can.</strong> Let someone else handle bedtime, school runs or kit organising when possible.</li>
+          <li><strong>Rest in real ways.</strong> If nights are broken, sleep whenever you can. Naps, early nights can make a big difference.</li>
+          <li><strong>Have moments where diabetes is not the topic.</strong> A meal, a walk, a chat or a TV episode where numbers and alarms are not discussed. Your mind needs breaks.</li>
+          <li><strong>Keep food and water easy for yourself.</strong> Simple meals, snacks you enjoy and a water bottle you actually use help keep you healthy.</li>
+          <li><strong>Talk to someone who understands T1D life.</strong> Another parent, a nurse or a friend who listens.</li>
+          <li><strong>Write things down when your head feels full.</strong> Not for organisation, but for relief. Putting worries on paper can help.</li>
+          <li><strong>Notice the good moments.</strong></li>
+          <li><strong>Looking after yourself is part of looking after your child.</strong> A steadier you makes diabetes feel lighter for them.</li>
+        </ol>
+      </div>
+
+      <!-- Permission to rest -->
+      <div class="panel" style="margin-top:20px; background:#F3EFE7;">
+        <h3 style="font-family:'Archivo',sans-serif; color:var(--adult-slate); margin-bottom:10px;">Permission to rest</h3>
+        <p style="font-size:.95rem; line-height:1.6;">Asking for a break doesn't mean you're failing at this. Accepting help from someone else doesn't mean you're not capable. Having an off day doesn't undo all the good days. Care that isn't sustainable for you isn't sustainable for them either.</p>
+      </div>
+
+      <!-- Support network -->
+      <div class="panel" style="margin-top:20px;">
+        <h3 style="font-family:'Archivo',sans-serif; color:var(--adult-slate); margin-bottom:10px;">Building your support network</h3>
+        <ul style="margin:0; padding-left:20px; font-size:.95rem; line-height:1.8;">
+          <li>Teach the basics to one other trusted adult, a partner, grandparent, or regular babysitter, so you're never the only one who knows what to do</li>
+          <li>Put together a one-page brief for schools, sleepovers, or clubs so you're not re-explaining everything from scratch each time</li>
+          <li>Look for a peer support group in your area, connecting with other families who understand it day-to-day makes a real difference</li>
+        </ul>
+      </div>
+
+      <!-- Small wins -->
+      <div class="panel" style="margin-top:20px;">
+        <h3 style="font-family:'Archivo',sans-serif; color:var(--adult-slate); margin-bottom:10px;">One thing that went okay today</h3>
+        <p style="font-size:.9rem; color:rgba(38,52,74,0.65); margin-bottom:12px;">It's easy to only notice what went wrong. Jot down one small win before you finish up today.</p>
+        <div style="display:flex; gap:10px; flex-wrap:wrap;">
+          <input type="text" id="smallWinInput" placeholder="e.g. We caught a low early and handled it calmly" style="flex:1; min-width:220px; padding:12px 14px; border-radius:8px; border:1px solid #DDD6C4; font-family:inherit; font-size:.95rem;">
+          <button class="btn" id="smallWinSubmit">Save</button>
+        </div>
+        <p id="smallWinResponse" class="hidden" style="margin-top:12px; font-size:.9rem; color:var(--adult-teal); font-weight:600;"></p>
+        <p id="smallWinEntry" class="hidden" style="margin-top:6px; font-size:.95rem; color:rgba(38,52,74,0.8); background:#F3EFE7; border-radius:8px; padding:10px 14px;"></p>
+      </div>
+
+      <!-- When to reach out -->
+      <div class="panel" style="margin-top:20px;">
+        <h3 style="font-family:'Archivo',sans-serif; color:var(--adult-slate); margin-bottom:10px;">When to reach out for extra support</h3>
+        <p style="font-size:.95rem; line-height:1.6;">If things feel like more than day-to-day stress, if you're feeling low most of the time, or it's affecting your sleep, health, or relationships in a lasting way, it's worth talking to your GP, a health visitor, or a counsellor. Reaching out early tends to help more than waiting until things feel unmanageable.</p>
+      </div>
+    </section>
+
+    <!-- ============ FRIENDS & SIBLINGS HOME ============ -->
+    <section id="view-friends-home" class="hidden">
+      <div class="zone-header">
+        <div id="ziggy-zone-slot"></div>
+        <div>
+          <h1>Hi, I'm Jon!</h1>
+          <p class="zone-tagline">For anyone whose friend, brother or sister has T1D.</p>
+        </div>
+      </div>
+
+      <div class="panel" style="margin-bottom:18px; background:#FFF0DC;">
+        <p style="font-size:.9rem; line-height:1.5;">🌟 If you're little, it's okay to ask a grown-up to read this with you!</p>
+      </div>
+
+      <div class="progress-strip">
+        <span class="count" id="friendsBadgeCount" style="background:var(--friends-orange);">0 / 6 done</span>
+        <div class="track"><div class="fill" id="friendsProgressFill" style="width:0%; background:linear-gradient(90deg,var(--friends-orange),var(--friends-green));"></div></div>
+        <button class="count" id="friendsSoundToggle" style="background:var(--friends-blue); color:#fff; cursor:pointer;" aria-label="Toggle sound">🔊</button>
+      </div>
+
+      <div class="card-grid">
+        <button class="tile" data-goto="view-friends-understand">
+          <div class="tile-icon" style="background:#FFE3C2">💡</div>
+          <div class="tile-title">What's Going On?</div>
+          <p class="tile-desc">A simple explanation of what T1D actually is.</p>
+        </button>
+        <button class="tile" data-goto="view-friends-knowledge">
+          <div class="tile-icon" style="background:#E6DFFA">🧠</div>
+          <div class="tile-title">What Should I Know?</div>
+          <p class="tile-desc">The key facts about T1D, all in one place.</p>
+        </button>
+        <button class="tile" data-goto="view-friends-questions">
+          <div class="tile-icon" style="background:#D6F0FF">❓</div>
+          <div class="tile-title">Questions You Might Have</div>
+          <p class="tile-desc">Things lots of siblings and friends wonder about.</p>
+        </button>
+        <button class="tile" data-goto="view-friends-feelings">
+          <div class="tile-icon" style="background:#FFD9E8">💛</div>
+          <div class="tile-title">Your Feelings Matter Too</div>
+          <p class="tile-desc">It's okay to feel jealous, worried, or unsure sometimes.</p>
+        </button>
+        <button class="tile" data-goto="view-friends-tips">
+          <div class="tile-icon" style="background:#DFF5E3">🤝</div>
+          <div class="tile-title">Being a Great Friend</div>
+          <p class="tile-desc">Little things that make a big difference.</p>
+        </button>
+        <button class="tile" data-goto="view-friends-scenario">
+          <div class="tile-icon" style="background:#FFE3C2">🎮</div>
+          <div class="tile-title">What Would You Do?</div>
+          <p class="tile-desc">Try out some everyday moments.</p>
+        </button>
+        <button class="tile" data-goto="view-friends-badges">
+          <div class="tile-icon" style="background:#D6F0FF">⭐</div>
+          <div class="tile-title">Star Wall</div>
+          <p class="tile-desc">See everything you've earned so far.</p>
+        </button>
+      </div>
+    </section>
+
+    <!-- ---- Friends: What's Going On? ---- -->
+    <section id="view-friends-understand" class="hidden">
+      <div class="section-header">
+        <button class="back-btn" data-goto="view-friends-home">←</button>
+        <h2>What's Going On?</h2>
+      </div>
+      <div class="panel">
+        <div class="speech-row">
+          <div id="ziggy-story-slot"></div>
+          <div class="speech-bubble" id="friendsStoryText">Loading...</div>
+        </div>
+        <div class="slide-dots" id="friendsStoryDots"></div>
+        <div class="btn-row">
+          <button class="btn secondary" id="friendsStoryBack">Back</button>
+          <button class="btn" id="friendsStoryNext" style="background:var(--friends-orange);">Next</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ---- Friends: What Should I Know? ---- -->
+    <section id="view-friends-knowledge" class="hidden">
+      <div class="section-header">
+        <button class="back-btn" data-goto="view-friends-home">←</button>
+        <h2>What Should I Know?</h2>
+      </div>
+      <div class="panel" style="margin-bottom:18px;">
+        <p style="line-height:1.6;">Here are the key facts about T1D, all in one place, so you've always got somewhere to check back.</p>
+      </div>
+      <p style="margin-bottom:14px; font-size:.92rem; color:rgba(28,43,74,0.6);">Tap a card to find out more.</p>
+      <div class="card-grid" id="friendsKnowledgeGrid"></div>
+      <div class="btn-row" style="justify-content:center; margin-top:20px;">
+        <button class="btn" id="friendsKnowledgeDoneBtn" style="background:var(--friends-orange);">Got it!</button>
+      </div>
+    </section>
+
+    <!-- ---- Friends: Questions You Might Have ---- -->
+    <section id="view-friends-questions" class="hidden">
+      <div class="section-header">
+        <button class="back-btn" data-goto="view-friends-home">←</button>
+        <h2>Questions You Might Have</h2>
+      </div>
+      <p style="margin-bottom:14px; font-size:.92rem; color:rgba(28,43,74,0.6);">Tap a question to see the answer.</p>
+      <div class="card-grid" id="friendsQuestionsGrid"></div>
+      <div class="btn-row" style="justify-content:center; margin-top:20px;">
+        <button class="btn" id="friendsQuestionsDoneBtn" style="background:var(--friends-orange);">Got it!</button>
+      </div>
+    </section>
+
+    <!-- ---- Friends: Your Feelings Matter Too ---- -->
+    <section id="view-friends-feelings" class="hidden">
+      <div class="section-header">
+        <button class="back-btn" data-goto="view-friends-home">←</button>
+        <h2>Your Feelings Matter Too</h2>
+      </div>
+      <div class="panel" style="margin-bottom:18px;">
+        <p style="line-height:1.6;">Having a friend or sibling with T1D can bring up all kinds of feelings for you too, and that's completely okay. Your feelings matter just as much.</p>
+      </div>
+      <p style="margin-bottom:14px; font-size:.92rem; color:rgba(28,43,74,0.6);">Tap a feeling to see what might help.</p>
+      <div class="card-grid" id="friendsFeelingsGrid"></div>
+      <div class="btn-row" style="justify-content:center; margin-top:20px;">
+        <button class="btn" id="friendsFeelingsDoneBtn" style="background:var(--friends-orange);">I've got this</button>
+      </div>
+    </section>
+
+    <!-- ---- Friends: Being a Great Friend ---- -->
+    <section id="view-friends-tips" class="hidden">
+      <div class="section-header">
+        <button class="back-btn" data-goto="view-friends-home">←</button>
+        <h2>Being a Great Friend</h2>
+      </div>
+      <p style="margin-bottom:14px; font-size:.92rem; color:rgba(28,43,74,0.6);">Tap a tip to see why it helps.</p>
+      <div class="card-grid" id="friendsTipsGrid"></div>
+      <div class="btn-row" style="justify-content:center; margin-top:20px;">
+        <button class="btn" id="friendsTipsDoneBtn" style="background:var(--friends-orange);">I'll remember this</button>
+      </div>
+    </section>
+
+    <!-- ---- Friends: What Would You Do? ---- -->
+    <section id="view-friends-scenario" class="hidden">
+      <div class="section-header">
+        <button class="back-btn" data-goto="view-friends-home">←</button>
+        <h2>What Would You Do?</h2>
+      </div>
+      <div class="panel myth-card">
+        <div class="myth-progress" id="friendsScenarioProgress"></div>
+        <div class="myth-statement" id="friendsScenarioQuestion">Loading...</div>
+        <div class="btn-row" id="friendsScenarioChoices" style="flex-direction:column; align-items:stretch;"></div>
+        <div class="myth-feedback hidden" id="friendsScenarioFeedback"></div>
+        <div class="btn-row" style="justify-content:center;">
+          <button class="btn hidden" id="friendsScenarioNext" style="background:var(--friends-orange);">Next</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ---- Friends: Star Wall ---- -->
+    <section id="view-friends-badges" class="hidden">
+      <div class="section-header">
+        <button class="back-btn" data-goto="view-friends-home">←</button>
+        <h2>Star Wall</h2>
+      </div>
+      <div class="panel certificate hidden" id="friendsCertificate" style="border-color:var(--friends-orange);">
+        <div style="font-size:2.4rem;">🌟</div>
+        <h3 style="font-family:'Baloo 2',sans-serif; color:#C2650F; margin:8px 0 6px;">You did it all!</h3>
+        <p style="font-size:0.95rem; color:rgba(28,43,74,0.7);">You've gone through everything here. You're going to be a brilliant friend, well done!</p>
+      </div>
+      <div class="badge-wall" id="friendsBadgeWall"></div>
+    </section>
+
+  </main>
+
+  <footer class="disclaimer">
+    GT1's Toolkit is an education and awareness tool. It does not replace medical advice from your child's diabetes care team. In an emergency, always follow the child's individual care plan and call emergency services if needed.
+  </footer>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
